@@ -1,0 +1,14 @@
+﻿@page "/AddContactInfo"
+
+@inject IContactRepository contactRepository
+@using ListaTelefonica.Models
+
+<HeaderAddContactInfo></HeaderAddContactInfo>
+
+<FormContactInfo ContactInfo="@_newContactInfo"></FormContactInfo>
+
+
+@code {
+    private ContactInfo _newContactInfo = new();
+
+}

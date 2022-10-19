@@ -1,0 +1,37 @@
+﻿@page "/"
+
+@inject IContactRepository contactRepository
+@using ListaTelefonica.Models
+
+
+<HeaderIndex></HeaderIndex>
+
+@if (_isLoading)
+{
+
+}
+else if (_contacts is not null)
+{
+    @foreach (var contact in _contacts)
+    {
+        <span>@contact.Name</span>
+    }
+}
+else
+{
+    <span>TEM NADA NÃO</span>
+}
+
+
+<h1>Index</h1>
+
+@code {
+    private List<ContactInfo> _contacts { get; set; }
+    private bool _isLoading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _contacts = await contactRepository.GetAllAsync();
+        _isLoading = false;
+    }
+}
