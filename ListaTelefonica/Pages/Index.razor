@@ -1,29 +1,16 @@
 ﻿@page "/"
 
-@inject IContactRepository contactRepository
-@using ListaTelefonica.Models
-
-
 <HeaderIndex></HeaderIndex>
 
-@if (_isLoading)
+if (_contacts is not null)
 {
-
+    <div class="contact-main">
+        @foreach (var contact in _contacts.OrderBy(x => x.Name))
+        {
+            <ContactItem Contact="@contact"></ContactItem>
+        }
+    </div>
 }
-else if (_contacts is not null)
-{
-    @foreach (var contact in _contacts)
-    {
-        <span>@contact.Name</span>
-    }
-}
-else
-{
-    <span>TEM NADA NÃO</span>
-}
-
-
-<h1>Index</h1>
 
 @code {
     private List<ContactInfo> _contacts { get; set; }

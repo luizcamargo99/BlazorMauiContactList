@@ -1,6 +1,7 @@
 ﻿using Blazored.LocalStorage;
 using ListaTelefonica.Interfaces;
 using ListaTelefonica.Models;
+using static Android.Graphics.ColorSpace;
 
 namespace ListaTelefonica.Repositories;
 
@@ -22,7 +23,57 @@ public class ContactRepository : IContactRepository
 
     public async Task<ContactInfo> GetAsync(Guid id)
     {
-        var contacts = await _localStorage.GetItemAsync<List<ContactInfo>>(_keyContacts);
+        var contacts = await GetAllAsync();
         return contacts.FirstOrDefault(x => x.Id == id);
     }
+
+    public async Task<bool> Save(ContactInfo model)
+    {
+        var isSuccess = true;
+
+        try
+        {
+            var contacts = await GetAllAsync() ?? new List<ContactInfo>();
+
+            if (model.Id is null)
+            {
+                model.Id = Guid.NewGuid();
+            }
+            else
+            {
+                contacts.RemoveAll(x => x.Id == model.Id);
+            }
+
+            contacts.Add(model);
+
+            await _localStorage.SetItemAsync(_keyContacts, contacts);
+        }
+        catch
+        {
+            isSuccess = false;
+        }
+
+        return isSuccess;
+    }
+
+    public async Task<bool> Delete(Guid id)
+    {
+        var isSuccess = true;
+
+        try
+        {
+            var contacts = await GetAllAsync() ?? new List<ContactInfo>();
+
+            contacts.RemoveAll(x => x.Id == id);
+
+            await _localStorage.SetItemAsync(_keyContacts, contacts);
+        }
+        catch
+        {
+            isSuccess = false;
+        }
+
+        return isSuccess;
+    }
+
 }

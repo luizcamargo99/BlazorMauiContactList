@@ -1,14 +1,22 @@
-﻿@page "/AddContactInfo"
+﻿@page "/AddContactInfo/{Id:guid}"
 
-@inject IContactRepository contactRepository
-@using ListaTelefonica.Models
-
-<HeaderAddContactInfo></HeaderAddContactInfo>
+<HeaderAddContactInfo IsEdit="Id != Guid.Empty"></HeaderAddContactInfo>
 
 <FormContactInfo ContactInfo="@_newContactInfo"></FormContactInfo>
 
 
 @code {
     private ContactInfo _newContactInfo = new();
+
+    [Parameter]
+    public Guid Id { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (Id != Guid.Empty)
+        {
+            _newContactInfo = await contactRepository.GetAsync(Id);
+        }
+    }
 
 }

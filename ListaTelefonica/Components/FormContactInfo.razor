@@ -1,6 +1,6 @@
 ﻿<form @onsubmit="async() => { await Save(); }">
     <label for="name">Nome</label>
-    <input id="name" type="text" @bind="@ContactInfo.Name" @bind:event="oninput" required/>
+    <input id="name" type="text" @bind="@ContactInfo.Name" @bind:event="oninput" required />
 
     <label for="phone">Telefone</label>
     <input id="phone" type="tel" @bind="@ContactInfo.Phone" @bind:event="oninput" required />
@@ -8,13 +8,13 @@
     <label for="email">E-mail</label>
     <input id="email" type="email" @bind="@ContactInfo.Email" @bind:event="oninput" required />
 
-    <select class="custom-select" id="inputGroupSelect01" required>
+    <select class="custom-select" id="priorization" @bind="@(ContactInfo.Priorization)" required>
         @foreach (var priorization in (EContactPriorization[])Enum.GetValues(typeof(EContactPriorization)))
         {
-            <option value="@((int)priorization)">@(priorization.GetEnumDescription())</option>
+            <option value="@(priorization)">@(priorization.GetEnumDescription())</option>
         }
     </select>
-
+  
     <button type="submit">Salvar</button>
 </form>
 
@@ -24,6 +24,11 @@
 
     private async Task Save()
     {
+        var isSuccess = await contactRepository.Save(ContactInfo);
 
+        if (isSuccess)
+        {
+            navigation.NavigateTo("/");
+        }
     }
 }
