@@ -5,7 +5,7 @@
 @if (_contacts is not null)
 {
     <div class="contact-main">
-        @foreach (var contact in _contacts)
+        @foreach (var contact in _contacts.OrderBy(x => x.Name))
         {
             <ContactItem Contact="@contact"></ContactItem>
         }
