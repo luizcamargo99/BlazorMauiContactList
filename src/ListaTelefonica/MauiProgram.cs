@@ -23,7 +23,7 @@ public static class MauiProgram
 
 		#if DEBUG
 		builder.Services.AddBlazorWebViewDeveloperTools();
-#endif
+		#endif
 		
 
 		return builder.Build();

@@ -1,7 +1,6 @@
 ﻿using Blazored.LocalStorage;
 using ListaTelefonica.Interfaces;
 using ListaTelefonica.Models;
-using static Android.Graphics.ColorSpace;
 
 namespace ListaTelefonica.Repositories;
 
