@@ -1,0 +1,15 @@
+﻿<span role="button" @onclick='OnClick' class="icon-button" style="background: @BackgroundColor">
+    <i class="@IconClass"></i>
+</span>
+
+@code {
+
+    [Parameter]
+    public string IconClass { get; set; }
+
+    [Parameter]
+    public string BackgroundColor { get; set; }
+
+    [Parameter]
+    public Action OnClick { get; set; }
+}

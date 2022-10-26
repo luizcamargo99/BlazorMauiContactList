@@ -63,6 +63,7 @@
 
     <ItemGroup>
       <Content Include="Components\ContactItem.razor.css" />
+      <Content Include="Components\IconButton.razor.css" />
       <Content Include="Components\SubmitButton.razor.css" />
       <Content Include="Components\InputGroup.razor.css" />
       <Content Include="Components\FormContactInfo.razor.css" />

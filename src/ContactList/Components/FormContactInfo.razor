@@ -21,6 +21,16 @@
     [Parameter]
     public ContactInfo ContactInfo { get; set; }
 
+    private Dictionary<string, int> _priorization = new Dictionary<string, int>();
+
+    protected override void OnInitialized()
+    {
+        foreach (var item in (EContactPriorization[])Enum.GetValues(typeof(EContactPriorization)))
+        {
+            _priorization.Add(item.GetEnumDescription(), (int)item);
+        }
+    }
+
     private async Task Save()
     {
         var isSuccess = await contactRepository.Save(ContactInfo);

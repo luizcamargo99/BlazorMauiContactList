@@ -11,8 +11,8 @@
     </div>
 
     <div class="button-group">
-        <span role="button" @onclick='() => { navigation.NavigateTo($"/AddContactInfo/{Contact.Id}"); }' class="edit"><i class="oi oi-pencil"></i></span>
-        <span role="button" @onclick='async() => { await DeleteAsync(); }' class="delete"><i class="oi oi-trash"></i></span>
+        <IconButton OnClick='() => { navigation.NavigateTo($"/AddContactInfo/{Contact.Id}"); }' IconClass="oi oi-pencil" BackgroundColor="#dbb900"></IconButton>
+        <IconButton OnClick="async() => { await DeleteAsync(); }" IconClass="oi oi-trash" BackgroundColor="#ff4343"></IconButton>
     </div>
 
 </div>
