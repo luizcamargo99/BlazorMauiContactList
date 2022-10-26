@@ -13,7 +13,7 @@
         <EnableDefaultCssItems>true</EnableDefaultCssItems>
 
         <!-- Display name -->
-        <ApplicationTitle>ContactList</ApplicationTitle>
+        <ApplicationTitle>Contact List</ApplicationTitle>
 
         <!-- App Identifier -->
         <ApplicationId>com.companyname.contactlist</ApplicationId>
@@ -51,6 +51,8 @@
 
     <ItemGroup>
       <MauiCss Remove="Components\ContactItem.razor.css" />
+      <MauiCss Remove="Components\FormContactInfo - Cópia.razor.css" />
+      <MauiCss Remove="Components\InputGroup - Cópia.razor.css" />
       <MauiCss Remove="Pages\Index.razor.css" />
     </ItemGroup>
 
@@ -61,6 +63,8 @@
 
     <ItemGroup>
       <Content Include="Components\ContactItem.razor.css" />
+      <Content Include="Components\SubmitButton.razor.css" />
+      <Content Include="Components\InputGroup.razor.css" />
       <Content Include="Components\FormContactInfo.razor.css" />
       <Content Include="Pages\Index.razor.css" />
     </ItemGroup>

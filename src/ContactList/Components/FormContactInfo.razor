@@ -1,21 +1,20 @@
 ﻿<form @onsubmit="async() => { await Save(); }">
-    <label for="name">Nome</label>
-    <input id="name" type="text" @bind="@ContactInfo.Name" @bind:event="oninput" required />
 
-    <label for="phone">Telefone</label>
-    <input id="phone" type="tel" @bind="@ContactInfo.Phone" @bind:event="oninput" required />
+    <InputGroup Focus="true" Id="name" Label="Name" Type="text" @bind-Value="@(ContactInfo.Name)" />
+    <InputGroup Focus="false" Id="phone" Label="Phone Number" @bind-Value="@(ContactInfo.Phone)" Type="number" />
+    <InputGroup Focus="false" Id="email" Label="E-mail" @bind-Value="@(ContactInfo.Email)" Type="email" />
 
-    <label for="email">E-mail</label>
-    <input id="email" type="email" @bind="@ContactInfo.Email" @bind:event="oninput" required />
+    <div>
+        <label for="priorization">Priority</label>
+        <select class="custom-select" id="priorization" @bind="@(ContactInfo.Priorization)" required>
+            @foreach (var priorization in (EContactPriorization[])Enum.GetValues(typeof(EContactPriorization)))
+            {
+                <option value="@(priorization)">@(priorization.GetEnumDescription())</option>
+            }
+        </select>
+    </div>
 
-    <select class="custom-select" id="priorization" @bind="@(ContactInfo.Priorization)" required>
-        @foreach (var priorization in (EContactPriorization[])Enum.GetValues(typeof(EContactPriorization)))
-        {
-            <option value="@(priorization)">@(priorization.GetEnumDescription())</option>
-        }
-    </select>
-  
-    <button type="submit">Salvar</button>
+    <SubmitButton Label="Save"></SubmitButton>
 </form>
 
 @code {

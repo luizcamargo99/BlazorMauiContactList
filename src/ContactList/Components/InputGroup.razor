@@ -1,0 +1,32 @@
+﻿<div class="input-group">
+    <label for="@Id">@Label</label>
+    <input id="@Id" type="@Type" @ref="_input" @bind="@Value" @bind:event="oninput" required @onchange="async() => { await ValueChanged.InvokeAsync(Value);   }" />
+</div>
+
+@code {
+    [Parameter]
+    public string Label { get; set; }
+
+    [Parameter]
+    public string Id { get; set; }
+
+    [Parameter]
+    public bool Focus { get; set; }
+
+    [Parameter]
+    public string Type { get; set; }
+
+    [Parameter]
+    public string Value { get; set; }
+
+    [Parameter]
+    public EventCallback<string> ValueChanged { get; set; }
+
+    private ElementReference _input { get; set; }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender && Focus)
+            await _input.FocusAsync();
+    }
+}

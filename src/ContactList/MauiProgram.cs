@@ -1,7 +1,6 @@
 ﻿using Blazored.LocalStorage;
 using ContactList.Interfaces;
 using ContactList.Repositories;
-using Microsoft.AspNetCore.Components.WebView.Maui;
 
 namespace ContactList;
 
@@ -19,10 +18,10 @@ public static class MauiProgram
 
 		builder.Services.AddMauiBlazorWebView();
 		builder.Services.AddBlazoredLocalStorage();
-		builder.Services.AddScoped<IContactRepository, ContactRepository>();
+        builder.Services.AddScoped<IContactRepository, ContactRepository>();   
 
-		#if DEBUG
-		builder.Services.AddBlazorWebViewDeveloperTools();
+#if DEBUG
+        builder.Services.AddBlazorWebViewDeveloperTools();
 		#endif
 		
 

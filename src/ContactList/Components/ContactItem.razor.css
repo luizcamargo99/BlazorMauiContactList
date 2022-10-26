@@ -27,7 +27,7 @@
 .edit, .delete {
     display: flex;
     flex-direction: row;
-    padding: 1rem;
+    padding: .6rem;
     border-radius: 2rem;
     color: #0c0c0c;
     cursor: pointer;
@@ -43,4 +43,17 @@
 
 .delete {
     background: #ff4343;
+}
+
+.contact-icon {
+    width: 3rem;
+    height: 3rem;
+}
+
+.contact-info-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    gap: 1rem;
 }

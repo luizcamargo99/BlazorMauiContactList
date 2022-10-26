@@ -1,12 +1,15 @@
 ﻿<div class="contact-info">
-    <div class="info-name">
-        <span>@(Contact.Name)</span>
-        <div>
-            <i class="oi oi-phone"></i>
-            <span>@(Contact.Phone)</span>
+    <div class="contact-info-content">
+        <img src="images/contact.png" class="contact-icon" />
+        <div class="info-name">
+            <span>@(Contact.Name)</span>
+            <div>
+                <i class="oi oi-phone"></i>
+                <span>@(Contact.Phone)</span>
+            </div>
         </div>
-        
     </div>
+
     <div class="button-group">
         <span role="button" @onclick='() => { navigation.NavigateTo($"/AddContactInfo/{Contact.Id}"); }' class="edit"><i class="oi oi-pencil"></i></span>
         <span role="button" @onclick='async() => { await DeleteAsync(); }' class="delete"><i class="oi oi-trash"></i></span>
